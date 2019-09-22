@@ -16,3 +16,8 @@ const MrDNA = require('mr-dna');
 let describeTableOutput = {};
 let createTableInput = MrDNA.generateCreateTableInput(describeTableOutput);
 ```
+
+Use cases
+---------
+
+This library was built to copy DynamoDB table structure from AWS into a locally running `dyanamodb-local` instance. You should be able to use it in reverse or copying table structure to other AWS accounts.
