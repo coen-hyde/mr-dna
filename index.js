@@ -4,6 +4,7 @@ const _ = require('lodash');
 
 module.exports = {
   generateCreateTableInput(tableDescription) {
+    if (tableDescription.Table) tableDescription = tableDescription.Table;
     let createTableInput = _.pick(tableDescription, ['AttributeDefinitions', 'TableName', 'KeySchema']);
     createTableInput.BillingMode = tableDescription.BillingModeSummary.BillingMode;
 

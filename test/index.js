@@ -7,7 +7,7 @@ const fixtures = require('./fixtures');
 describe('Dynamodb Table Copy', function() {
   it('should transform dynamodb describe into create table input', function(done) {
     let tableDescribe = fixtures.createPayPerRequestTable;
-    let output = lib.generateCreateTableInput(fixtures.describeTable.Table);
+    let output = lib.generateCreateTableInput(fixtures.describeTable);
 
     // Simple attribute copy
     expect(output.AttributeDefinitions).to.eql(tableDescribe.AttributeDefinitions);
