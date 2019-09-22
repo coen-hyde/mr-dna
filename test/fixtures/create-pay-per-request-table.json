@@ -1,0 +1,45 @@
+{
+  "AttributeDefinitions": [{
+      "AttributeName": "PartitionKey",
+      "AttributeType": "S"
+    },
+    {
+      "AttributeName": "RunAt",
+      "AttributeType": "N"
+    },
+    {
+      "AttributeName": "SeedDomain",
+      "AttributeType": "S"
+    },
+    {
+      "AttributeName": "SortKey",
+      "AttributeType": "S"
+    }
+  ],
+  "TableName": "attack-surface-mapping",
+  "KeySchema": [{
+      "AttributeName": "PartitionKey",
+      "KeyType": "HASH"
+    },
+    {
+      "AttributeName": "SortKey",
+      "KeyType": "RANGE"
+    }
+  ],
+  "GlobalSecondaryIndexes": [{
+    "IndexName": "MapListIndex",
+    "KeySchema": [{
+        "AttributeName": "SortKey",
+        "KeyType": "HASH"
+      },
+      {
+        "AttributeName": "RunAt",
+        "KeyType": "RANGE"
+      }
+    ],
+    "Projection": {
+      "ProjectionType": "ALL"
+    }
+  }],
+  "BillingMode": "PAY_PER_REQUEST"
+}
