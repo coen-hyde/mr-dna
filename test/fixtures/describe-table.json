@@ -28,24 +28,24 @@
       }
     ],
     "TableStatus": "ACTIVE",
-    "CreationDateTime": 1565588031.36,
+    "CreationDateTime": 1569219490.529,
     "ProvisionedThroughput": {
       "NumberOfDecreasesToday": 0,
       "ReadCapacityUnits": 0,
       "WriteCapacityUnits": 0
     },
-    "TableSizeBytes": 2376,
-    "ItemCount": 12,
+    "TableSizeBytes": 0,
+    "ItemCount": 0,
     "TableArn": "arn:aws:dynamodb:us-east-1:182907645591:table/attack-surface-mapping",
-    "TableId": "18b35a33-27b1-4812-beb3-5ef88d97fe10",
+    "TableId": "744e530d-515f-4b2b-990c-18d77dea6422",
     "BillingModeSummary": {
       "BillingMode": "PAY_PER_REQUEST",
-      "LastUpdateToPayPerRequestDateTime": 1565588031.36
+      "LastUpdateToPayPerRequestDateTime": 1569219490.529
     },
-    "GlobalSecondaryIndexes": [{
-      "IndexName": "MapListIndex",
+    "LocalSecondaryIndexes": [{
+      "IndexName": "RunAtIndex",
       "KeySchema": [{
-          "AttributeName": "SortKey",
+          "AttributeName": "PartitionKey",
           "KeyType": "HASH"
         },
         {
@@ -54,17 +54,63 @@
         }
       ],
       "Projection": {
-        "ProjectionType": "ALL"
+        "ProjectionType": "KEYS_ONLY"
       },
-      "IndexStatus": "ACTIVE",
-      "ProvisionedThroughput": {
-        "NumberOfDecreasesToday": 0,
-        "ReadCapacityUnits": 0,
-        "WriteCapacityUnits": 0
+      "IndexSizeBytes": 0,
+      "ItemCount": 0,
+      "IndexArn": "arn:aws:dynamodb:us-east-1:182907645591:table/attack-surface-mapping/index/RunAtIndex"
+    }],
+    "GlobalSecondaryIndexes": [{
+        "IndexName": "MapListIndex",
+        "KeySchema": [{
+            "AttributeName": "SortKey",
+            "KeyType": "HASH"
+          },
+          {
+            "AttributeName": "RunAt",
+            "KeyType": "RANGE"
+          }
+        ],
+        "Projection": {
+          "ProjectionType": "ALL"
+        },
+        "IndexStatus": "ACTIVE",
+        "ProvisionedThroughput": {
+          "NumberOfDecreasesToday": 0,
+          "ReadCapacityUnits": 0,
+          "WriteCapacityUnits": 0
+        },
+        "IndexSizeBytes": 0,
+        "ItemCount": 0,
+        "IndexArn": "arn:aws:dynamodb:us-east-1:182907645591:table/attack-surface-mapping/index/MapListIndex"
       },
-      "IndexSizeBytes": 2376,
-      "ItemCount": 12,
-      "IndexArn": "arn:aws:dynamodb:us-east-1:182907645591:table/attack-surface-mapping/index/MapListIndex"
-    }]
+      {
+        "IndexName": "SeedDomainIndex",
+        "KeySchema": [{
+            "AttributeName": "SeedDomain",
+            "KeyType": "HASH"
+          },
+          {
+            "AttributeName": "RunAt",
+            "KeyType": "RANGE"
+          }
+        ],
+        "Projection": {
+          "ProjectionType": "INCLUDE",
+          "NonKeyAttributes": [
+            "PartitionKey"
+          ]
+        },
+        "IndexStatus": "ACTIVE",
+        "ProvisionedThroughput": {
+          "NumberOfDecreasesToday": 0,
+          "ReadCapacityUnits": 0,
+          "WriteCapacityUnits": 0
+        },
+        "IndexSizeBytes": 0,
+        "ItemCount": 0,
+        "IndexArn": "arn:aws:dynamodb:us-east-1:182907645591:table/attack-surface-mapping/index/SeedDomainIndex"
+      }
+    ]
   }
 }

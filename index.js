@@ -9,7 +9,7 @@ module.exports = {
     createTableInput.BillingMode = tableDescription.BillingModeSummary.BillingMode;
 
     createTableInput.LocalSecondaryIndexes = _.map(tableDescription.LocalSecondaryIndexes, (li) => {
-      return _.pick(gi, ['IndexName', 'KeySchema', 'Projection']);
+      return _.pick(li, ['IndexName', 'KeySchema', 'Projection']);
     });
 
     createTableInput.GlobalSecondaryIndexes =_.map(tableDescription.GlobalSecondaryIndexes, (gi) => {

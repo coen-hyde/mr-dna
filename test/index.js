@@ -15,6 +15,25 @@ describe('Dynamodb Table Copy', function() {
     expect(output.KeySchema).to.eql(tableDescribe.KeySchema);
 
     // GlobalSecondaryIndexes
+    expect(output.LocalSecondaryIndexes).to.eql([
+      {
+        "IndexName":"RunAtIndex",
+        "KeySchema":[
+          {
+            "AttributeName":"PartitionKey",
+            "KeyType":"HASH"
+          },
+          {
+            "AttributeName":"RunAt",
+            "KeyType":"RANGE"
+          }
+        ],
+        "Projection":{
+          "ProjectionType":"KEYS_ONLY"
+        }
+      }
+    ]);
+
     expect(output.GlobalSecondaryIndexes).to.eql([
       {
         "IndexName":"MapListIndex",
@@ -30,6 +49,25 @@ describe('Dynamodb Table Copy', function() {
         ],
         "Projection":{
           "ProjectionType":"ALL"
+        }
+      },
+      {
+        "IndexName":"SeedDomainIndex",
+        "KeySchema":[
+          {
+            "AttributeName":"SeedDomain",
+            "KeyType":"HASH"
+          },
+          {
+            "AttributeName":"RunAt",
+            "KeyType":"RANGE"
+          }
+        ],
+        "Projection":{
+          "NonKeyAttributes": [
+            "PartitionKey"
+          ],
+          "ProjectionType":"INCLUDE"
         }
       }
     ]);
